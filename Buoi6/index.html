@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tony-Buoi6</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	Số a:<input class="so_a" placeholder="Nhập Số a"> <br> <br>
+	Số b:<input id="so_b" placeholder="Nhập Số b"> <br> <br>
+	Kết Quả:<input class="KQ" placeholder="Kết Quả" readonly><br> <br>
+	Phép Tính: <input id="pheptinh" placeholder="Nhập Phép Tính"> <br><br>
+	<button>Tính</button>
+	<script>
+		$(document).ready(function(){
+			$('button').click(function(){
+				var soa = $('.so_a').val();
+				var sob = $('#so_b').val();
+				var pt=$('#pheptinh').val();
+				if(soa==''){
+					confirm('Phải Nhập Sô a');
+					$('.so_a').focus();
+				}
+				if(sob==''){
+					confirm('Phải Nhập Sô b');
+					$('#so_b').focus();
+					return false;
+				}
+				if(sob==0){
+					//alert('Số b khác 0!') chi có 'OK'
+					alert('Số b khác 0!');
+					return false;
+				}
+				if(isNaN(soa)||isNaN(sob)){
+					alert('Vui lòng nhập số');
+					return false;
+				}
+				if(pt==''){
+					confirm('Phải nhập phép tính');
+					$('#pheptinh').focus();
+					return false;
+				}
+				var a=parseFloat(soa)
+				var b=parseFloat(sob)
+
+				if (pt=='+') {
+					var Kq = a + b;
+				}
+				else if (pt=='-') {
+					var Kq = a - b
+				}
+				else if (pt=='*'){
+					var Kq = a * b
+				}
+				else if (pt=='/') {
+					var Kq = a / b
+				}
+				else{
+					confirm('Phép Tính Không Hợp Lệ!')
+					$('#pheptinh').focus();
+					return false;
+				}
+
+				$('.KQ').val(Kq);
+			})
+		})
+
+	</script>
+</body>
+</html>
